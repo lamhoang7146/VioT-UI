@@ -8580,3 +8580,829 @@
   background-color: rgb(0, 89, 129);
   color: white;
 }
+
+/* Responsive for hero-7 */
+@media (max-width: 1200px) {
+  #hero-7 .hero-7-section-text h1 {
+    font-size: 60px;
+  }
+
+  #hero-7 .hero-7-section-text p {
+    font-size: 20px;
+  }
+
+  #hero-7 .hero-7-section-text .buttons button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  #hero-7 .hero-7-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    text-align: center;
+  }
+
+  #hero-7 .hero-7-section-text {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #hero-7 .hero-7-section-text h1 {
+    font-size: 48px;
+    text-align: center;
+  }
+
+  #hero-7 .hero-7-section-text p {
+    font-size: 18px;
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  #hero-7 .hero-7-section-text .buttons {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  #hero-7 .hero-7-section-text .buttons button {
+    font-size: 16px;
+    padding: 12px 30px;
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero-7 .hero-7-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    padding: 30px 0;
+  }
+
+  #hero-7 .hero-7-section-text {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  #hero-7 .hero-7-section-text h1 {
+    font-size: 36px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  #hero-7 .hero-7-section-text p {
+    font-size: 16px;
+    width: 90%;
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  #hero-7 .hero-7-section-text .buttons {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  #hero-7 .hero-7-section-text .buttons button {
+    font-size: 14px;
+    padding: 10px 25px;
+    width: 180px;
+  }
+}
+
+@media (max-width: 576px) {
+  #hero-7 .hero-7-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  #hero-7 .hero-7-section-text {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  #hero-7 .hero-7-section-text h1 {
+    font-size: 28px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  #hero-7 .hero-7-section-text p {
+    font-size: 14px;
+    width: 95%;
+    text-align: center;
+    margin: 16px auto;
+  }
+
+  #hero-7 .hero-7-section-text .buttons {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  #hero-7 .hero-7-section-text .buttons button {
+    font-size: 13px;
+    padding: 8px 20px;
+    width: 160px;
+  }
+}
+
+/* Timeline Styles */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #007bff, #28a745);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 40px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -28.5px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+  transform: translateX(0);
+}
+
+.timeline-year {
+  color: #666;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-style: italic;
+  display: block;
+}
+
+.timeline-marker.future {
+  background: #28a745;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.timeline-content h6 {
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.timeline-content p {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 25px;
+  }
+
+  .timeline::before {
+    left: 12px;
+  }
+
+  .timeline-item {
+    padding-left: 35px;
+  }
+
+  .timeline-marker {
+    left: -24px;
+    width: 25px;
+    height: 25px;
+    transform: translateX(0);
+  }
+
+  .timeline-year {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 576px) {
+  .timeline {
+    padding-left: 20px;
+  }
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timeline-item {
+    padding-left: 30px;
+  }
+
+  .timeline-marker {
+    left: -18.5px;
+    width: 20px;
+    height: 20px;
+    transform: translateX(0);
+  }
+
+  .timeline-year {
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+}
+
+/* Market Opportunity & Strategic Projects Styles */
+.market-opportunity-section {
+  padding: 60px 0;
+}
+
+.market-opportunity-section .container {
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.market-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #28a745;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.market-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.market-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 24px;
+}
+
+.market-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.market-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  line-height: 1.6;
+  font-size: 17.6px;
+}
+
+.market-list li:last-child {
+  border-bottom: none;
+}
+
+.market-list strong {
+  color: #28a745;
+  font-weight: 600;
+}
+
+/* Project Cards */
+.project-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.project-header {
+  background: #f8f9fa;
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.project-header h6 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.project-content {
+  padding: 25px;
+}
+
+.project-content h5 {
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 600;
+}
+
+.project-content p.p-sm {
+  font-size: 17.6px;
+  line-height: 1.6;
+}
+
+.reason-card p.p-sm {
+  font-size: 17.6px;
+  line-height: 1.6;
+}
+
+.project-partner {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.partner-label {
+  color: #28a745;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.partner-name {
+  color: #666;
+  margin-left: 8px;
+}
+
+/* Why Choose Cards */
+.reason-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.reason-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.reason-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.reason-card h5 {
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Fade In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Initial state for elements before animation */
+.wow {
+  visibility: hidden;
+}
+
+.wow.fadeInUp {
+  visibility: visible;
+  animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: both;
+}
+
+/* Ensure smooth performance */
+.wow {
+  will-change: transform, opacity;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Ensure animation works on mobile */
+@media (max-width: 768px) {
+  .wow {
+    visibility: hidden;
+  }
+
+  .wow.fadeInUp {
+    visibility: visible;
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+}
+
+/* Ensure content visible on mobile even if WOW fails */
+@media (max-width: 991px) {
+  .wow {
+    visibility: visible !important;
+  }
+
+  .wow.fadeInUp {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+}
+
+@media (max-width: 576px) {
+  .wow {
+    visibility: hidden;
+  }
+
+  .wow.fadeInUp {
+    visibility: visible;
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+}
+
+/* Optimize scrolling performance */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent layout shifts during animation */
+.market-card,
+.project-card,
+.reason-card {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Smooth transitions for hover effects */
+.market-card,
+.project-card,
+.reason-card {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .wow {
+    animation: none !important;
+    visibility: visible !important;
+  }
+
+  .market-card,
+  .project-card,
+  .reason-card {
+    transition: none !important;
+  }
+}
+
+/* Mobile animation fixes */
+@media (max-width: 991px) {
+  .wow {
+    visibility: hidden;
+  }
+
+  .wow.fadeInUp,
+  .wow.animated {
+    visibility: visible;
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .market-opportunity-section h2.h2-lg {
+    font-size: 42px;
+  }
+
+  .market-section h3.h3-md,
+  .projects-section h3.h3-md,
+  .why-choose-section h3.h3-md {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 992px) {
+  .market-opportunity-section h2.h2-lg {
+    font-size: 36px;
+  }
+
+  .market-section h3.h3-md,
+  .projects-section h3.h3-md,
+  .why-choose-section h3.h3-md {
+    font-size: 24px;
+  }
+
+  .market-card h5.h5-md,
+  .project-content h5.h5-sm {
+    font-size: 18px;
+  }
+
+  .market-list li,
+  .project-content p.p-sm,
+  .reason-card p.p-sm {
+    font-size: 17.6px;
+    line-height: 1.6;
+  }
+
+  /* Reduce spacing for tablet */
+  .market-section,
+  .projects-section,
+  .why-choose-section {
+    margin-bottom: 35px;
+  }
+
+  @media (max-width: 768px) {
+    .market-opportunity-section {
+      padding: 40px 0;
+    }
+
+    .market-opportunity-section .container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .market-opportunity-section h2.h2-lg {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .market-section h3.h3-md,
+    .projects-section h3.h3-md,
+    .why-choose-section h3.h3-md {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .market-section p.p-lg,
+    .projects-section p.p-lg {
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+
+    .market-card,
+    .project-card,
+    .reason-card {
+      margin-bottom: 30px;
+    }
+
+    .market-card h5.h5-md,
+    .project-content h5.h5-sm {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .market-list li,
+    .project-content p.p-sm,
+    .reason-card p.p-sm {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .market-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .reason-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .project-header h6.h6-md {
+      font-size: 14px;
+    }
+
+    .partner-label,
+    .partner-name {
+      font-size: 13px;
+    }
+
+    /* Adjust spacing for mobile */
+    .market-section,
+    .projects-section,
+    .why-choose-section {
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .market-opportunity-section .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .market-opportunity-section h2.h2-lg {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .market-section h3.h3-md,
+    .projects-section h3.h3-md,
+    .why-choose-section h3.h3-md {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+
+    .market-section p.p-lg,
+    .projects-section p.p-lg {
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .market-card,
+    .project-card,
+    .reason-card {
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .market-card h5.h5-md,
+    .project-content h5.h5-sm {
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .market-list li,
+    .project-content p.p-sm,
+    .reason-card p.p-sm {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .project-header {
+      padding: 15px;
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-header h6.h6-md {
+      font-size: 13px;
+    }
+
+    .partner-label,
+    .partner-name {
+      font-size: 12px;
+    }
+
+    .market-icon {
+      width: 45px;
+      height: 45px;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .reason-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    /* Adjust spacing for small mobile */
+    .market-section,
+    .projects-section,
+    .why-choose-section {
+      margin-bottom: 25px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .market-opportunity-section {
+      padding: 30px 0;
+    }
+
+    .market-opportunity-section .container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    /* Ensure animation works on very small mobile */
+    .wow {
+      visibility: hidden;
+    }
+
+    .wow.fadeInUp {
+      visibility: visible;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      animation-fill-mode: both;
+    }
+
+    .market-opportunity-section h2.h2-lg {
+      font-size: 24px;
+      margin-bottom: 25px;
+    }
+
+    .market-section h3.h3-md,
+    .projects-section h3.h3-md,
+    .why-choose-section h3.h3-md {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .market-section p.p-lg,
+    .projects-section p.p-lg {
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .market-card,
+    .project-card,
+    .reason-card {
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .market-card h5.h5-md,
+    .project-content h5.h5-sm {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .market-list li,
+    .project-content p.p-sm,
+    .reason-card p.p-sm {
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .project-header h6.h6-md {
+      font-size: 12px;
+    }
+
+    .partner-label,
+    .partner-name {
+      font-size: 11px;
+    }
+
+    .market-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .reason-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    /* Adjust spacing for very small mobile */
+    .market-section,
+    .projects-section,
+    .why-choose-section {
+      margin-bottom: 20px;
+    }
+
+    .project-header {
+      padding: 12px;
+    }
+
+    .project-content {
+      padding: 15px;
+    }
+  }

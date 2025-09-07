@@ -95,6 +95,8 @@ video {
   max-width: 1140px;
   padding: 0 15px;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 /* Header Logo */
