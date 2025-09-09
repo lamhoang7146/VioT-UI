@@ -1,0 +1,310 @@
+#contact-form {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 1100;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Ensure body scroll is restored when modal is closed */
+body.modal-open {
+	overflow: hidden !important;
+}
+
+/* Force body to be scrollable when modal is not open - override all other CSS */
+body:not(.modal-open) {
+	overflow: auto !important;
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+}
+
+/* Override menu CSS that might interfere */
+body:not(.modal-open):not(.wsactive) {
+	overflow: auto !important;
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+}
+
+/* Additional safety for body scroll - override all themes */
+body {
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+}
+
+/* Override html overflow from menu.css */
+html:not(.modal-open) {
+	overflow: auto !important;
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+}
+
+#contact-form.show {
+	opacity: 1;
+	visibility: visible;
+}
+
+#contact-form .contact-form-display {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+#contact-form .contact-form-container {
+	width: 100%;
+	max-width: 450px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	transform: scale(0.8);
+	opacity: 0;
+	transition: all 0.3s ease;
+	overflow: hidden;
+	height: 90vh;
+}
+
+#contact-form .contact-form-content {
+	height: 100%;
+	overflow-y: auto;
+}
+
+#contact-form .contact-form-content::-webkit-scrollbar {
+	width: 5px;
+}
+
+#contact-form .contact-form-content::-webkit-scrollbar-thumb {
+	background-color: #00a8cc;
+	border-radius: 5px;
+}
+
+#contact-form .contact-form-content::-webkit-scrollbar-track {
+	background-color: #f1f1f1;
+	border-radius: 5px;
+}
+
+#contact-form.show .contact-form-container {
+	transform: scale(1);
+	opacity: 1;
+}
+
+/* Title */
+.contact-form-title {
+	font-size: 20px;
+	font-weight: 600;
+	margin: 0 0 20px 0;
+	color: #333;
+	text-align: center;
+}
+
+/* Form Styles */
+.contact-form {
+	padding: 25px;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.form-group label {
+	display: block;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 5px;
+	font-size: 13px;
+}
+
+.form-control {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 14px;
+	transition: all 0.3s ease;
+	box-sizing: border-box;
+	font-family: inherit;
+	background-color: #fff;
+}
+
+.form-control:focus {
+	outline: none;
+	border-color: #00a8cc;
+	box-shadow: 0 0 0 3px rgba(0, 168, 204, 0.1);
+}
+
+.form-control.error {
+	border-color: #e74c3c;
+}
+
+.form-control.success {
+	border-color: #27ae60;
+}
+
+.error-message {
+	color: #e74c3c;
+	font-size: 11px;
+	margin-top: 3px;
+	display: block;
+	min-height: 14px;
+}
+
+/* Checkbox Styles */
+.checkbox-label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 15px;
+}
+
+.checkbox-group {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.checkbox-item {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+.checkbox-item input[type="checkbox"] {
+	display: none;
+}
+
+.checkmark {
+	width: 20px;
+	height: 20px;
+	border: 2px solid #e1e5e9;
+	border-radius: 4px;
+	margin-right: 10px;
+	position: relative;
+	transition: all 0.3s ease;
+}
+
+.checkbox-item input[type="checkbox"]:checked+.checkmark {
+	background-color: #00a8cc;
+	border-color: #00a8cc;
+}
+
+.checkbox-item input[type="checkbox"]:checked+.checkmark::after {
+	content: '';
+	position: absolute;
+	left: 6px;
+	top: 2px;
+	width: 6px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+/* Submit Button */
+.btn-submit {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 4px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	width: 100%;
+	transition: all 0.3s ease;
+	position: relative;
+}
+
+.btn-submit:hover {
+	background-color: #0056b3;
+}
+
+.btn-submit:active {
+	transform: translateY(0);
+}
+
+.btn-submit:disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.btn-loading {
+	display: none;
+}
+
+.btn-submit.loading .btn-text {
+	display: none;
+}
+
+.btn-submit.loading .btn-loading {
+	display: inline;
+}
+
+/* Loading Message */
+.loading {
+	text-align: center;
+	padding: 15px;
+	font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	#contact-form .contact-form-container {
+		width: 95%;
+		max-height: 95vh;
+	}
+
+	.contact-form-header {
+		padding: 20px;
+	}
+
+	.contact-form {
+		padding: 20px;
+	}
+
+	.contact-form-title {
+		font-size: 20px;
+	}
+
+	.form-row {
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.checkbox-group {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Animation for form validation */
+@keyframes shake {
+
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+
+	25% {
+		transform: translateX(-5px);
+	}
+
+	75% {
+		transform: translateX(5px);
+	}
+}
+
+.form-group.error {
+	animation: shake 0.5s ease-in-out;
+}
