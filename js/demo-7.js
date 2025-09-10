@@ -13,3 +13,12 @@ contactForm.addEventListener('click', () => {
 contactFormContainer.addEventListener('click', (e) => {
 	e.stopPropagation();
 });
+
+const collaborate = document.getElementById('collaborate');
+const collaborateLink = document.querySelectorAll('.collab-btn');
+
+collaborateLink.forEach(link => {
+	link.addEventListener('click', () => {
+		contactForm.classList.add('show');
+	});
+});
