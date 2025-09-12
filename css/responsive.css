@@ -8867,6 +8867,12 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
+.market-card .market-icon-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .market-icon {
   width: 60px;
   height: 60px;
@@ -9029,7 +9035,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
+  font-size: 24px;
   margin: 0 auto 18px;
 }
 
