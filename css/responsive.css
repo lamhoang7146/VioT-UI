@@ -8571,7 +8571,7 @@
   gap: 20px;
 }
 
-#hero-7 .hero-7-section-text .buttons button {
+#hero-7 .hero-7-section-text .buttons a {
   padding: 12px 24px;
   font-size: 18px;
   border-radius: 8px;
@@ -8867,7 +8867,7 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.market-card .market-icon-box{
+.market-card .market-icon-box {
   display: flex;
   justify-content: center;
   align-items: center;
