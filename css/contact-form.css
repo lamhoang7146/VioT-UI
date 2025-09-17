@@ -1,310 +1,228 @@
+/* Overlay */
 #contact-form {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.7);
-	z-index: 1100;
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-/* Ensure body scroll is restored when modal is closed */
-body.modal-open {
-	overflow: hidden !important;
-}
-
-/* Force body to be scrollable when modal is not open - override all other CSS */
-body:not(.modal-open) {
-	overflow: auto !important;
-	overflow-x: hidden !important;
-	overflow-y: auto !important;
-}
-
-/* Override menu CSS that might interfere */
-body:not(.modal-open):not(.wsactive) {
-	overflow: auto !important;
-	overflow-x: hidden !important;
-	overflow-y: auto !important;
-}
-
-/* Additional safety for body scroll - override all themes */
-body {
-	overflow-x: hidden !important;
-	overflow-y: auto !important;
-}
-
-/* Override html overflow from menu.css */
-html:not(.modal-open) {
-	overflow: auto !important;
-	overflow-x: hidden !important;
-	overflow-y: auto !important;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 168, 204, 0.1)
+  );
+  backdrop-filter: blur(10px);
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #contact-form.show {
-	opacity: 1;
-	visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
-#contact-form .contact-form-display {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 20px;
-	box-sizing: border-box;
+/* Container */
+.contact-form-display {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-#contact-form .contact-form-container {
-	width: 100%;
-	max-width: 450px;
-	background-color: #fff;
-	border-radius: 8px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-	transform: scale(0.8);
-	opacity: 0;
-	transition: all 0.3s ease;
-	overflow: hidden;
-	height: 90vh;
-}
-
-#contact-form .contact-form-content {
-	height: 100%;
-	overflow-y: auto;
-}
-
-#contact-form .contact-form-content::-webkit-scrollbar {
-	width: 5px;
-}
-
-#contact-form .contact-form-content::-webkit-scrollbar-thumb {
-	background-color: #00a8cc;
-	border-radius: 5px;
-}
-
-#contact-form .contact-form-content::-webkit-scrollbar-track {
-	background-color: #f1f1f1;
-	border-radius: 5px;
+.contact-form-container {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  transform: scale(0.8) translateY(30px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: scroll;
+  max-height: 90vh;
 }
 
 #contact-form.show .contact-form-container {
-	transform: scale(1);
-	opacity: 1;
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Scroll inside */
+.contact-form-content {
+  height: 100%;
+  overflow-y: auto;
+  padding: 40px 30px;
 }
 
 /* Title */
 .contact-form-title {
-	font-size: 20px;
-	font-weight: 600;
-	margin: 0 0 20px 0;
-	color: #333;
-	text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  text-align: center;
+  position: relative;
 }
 
-/* Form Styles */
-.contact-form {
-	padding: 25px;
+.contact-form-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(45deg, #00a8cc, #0056b3);
+  border-radius: 2px;
 }
 
+/* Form Group */
 .form-group {
-	margin-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .form-group label {
-	display: block;
-	font-weight: 600;
-	color: #333;
-	margin-bottom: 5px;
-	font-size: 13px;
+  display: block;
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
+/* Input / Textarea */
 .form-control {
-	width: 100%;
-	padding: 10px 12px;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	font-size: 14px;
-	transition: all 0.3s ease;
-	box-sizing: border-box;
-	font-family: inherit;
-	background-color: #fff;
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e1e8ed;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .form-control:focus {
-	outline: none;
-	border-color: #00a8cc;
-	box-shadow: 0 0 0 3px rgba(0, 168, 204, 0.1);
+  border-color: #00a8cc;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 168, 204, 0.15);
+  outline: none;
 }
 
-.form-control.error {
-	border-color: #e74c3c;
+/* Textarea riêng */
+.textarea-control {
+  min-height: 120px;
+  resize: vertical;
 }
 
-.form-control.success {
-	border-color: #27ae60;
-}
-
+/* Error message */
 .error-message {
-	color: #e74c3c;
-	font-size: 11px;
-	margin-top: 3px;
-	display: block;
-	min-height: 14px;
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
-/* Checkbox Styles */
-.checkbox-label {
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	font-weight: 600;
-	color: #333;
-	margin-bottom: 15px;
-}
-
-.checkbox-group {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	gap: 10px;
-	margin-top: 10px;
-}
-
-.checkbox-item {
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	font-weight: normal;
-	margin-bottom: 0;
-}
-
-.checkbox-item input[type="checkbox"] {
-	display: none;
-}
-
-.checkmark {
-	width: 20px;
-	height: 20px;
-	border: 2px solid #e1e5e9;
-	border-radius: 4px;
-	margin-right: 10px;
-	position: relative;
-	transition: all 0.3s ease;
-}
-
-.checkbox-item input[type="checkbox"]:checked+.checkmark {
-	background-color: #00a8cc;
-	border-color: #00a8cc;
-}
-
-.checkbox-item input[type="checkbox"]:checked+.checkmark::after {
-	content: '';
-	position: absolute;
-	left: 6px;
-	top: 2px;
-	width: 6px;
-	height: 10px;
-	border: solid white;
-	border-width: 0 2px 2px 0;
-	transform: rotate(45deg);
+.error-message.show {
+  opacity: 1;
 }
 
 /* Submit Button */
 .btn-submit {
-	background-color: #007bff;
-	color: white;
-	border: none;
-	padding: 10px 20px;
-	border-radius: 4px;
-	font-size: 14px;
-	font-weight: 600;
-	cursor: pointer;
-	width: 100%;
-	transition: all 0.3s ease;
-	position: relative;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
 }
 
 .btn-submit:hover {
-	background-color: #0056b3;
-}
-
-.btn-submit:active {
-	transform: translateY(0);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.25);
 }
 
 .btn-submit:disabled {
-	opacity: 0.7;
-	cursor: not-allowed;
-	transform: none;
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
+/* Loading inside button */
 .btn-loading {
-	display: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .btn-submit.loading .btn-text {
-	display: none;
+  display: none;
 }
-
 .btn-submit.loading .btn-loading {
-	display: inline;
+  display: flex;
 }
 
-/* Loading Message */
-.loading {
-	text-align: center;
-	padding: 15px;
-	font-weight: 600;
+/* Spinner */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-	#contact-form .contact-form-container {
-		width: 95%;
-		max-height: 95vh;
-	}
-
-	.contact-form-header {
-		padding: 20px;
-	}
-
-	.contact-form {
-		padding: 20px;
-	}
-
-	.contact-form-title {
-		font-size: 20px;
-	}
-
-	.form-row {
-		flex-direction: column;
-		gap: 0;
-	}
-
-	.checkbox-group {
-		grid-template-columns: 1fr;
-	}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Animation for form validation */
-@keyframes shake {
-
-	0%,
-	100% {
-		transform: translateX(0);
-	}
-
-	25% {
-		transform: translateX(-5px);
-	}
-
-	75% {
-		transform: translateX(5px);
-	}
+/* Feedback Messages */
+.message-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 10;
 }
 
-.form-group.error {
-	animation: shake 0.5s ease-in-out;
+.message-box.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.success-message {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+}
+
+.error-box {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+}
+
+.message-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
 }

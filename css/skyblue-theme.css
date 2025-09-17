@@ -7157,7 +7157,7 @@ ol.digit-list p {
 
 .contact-form .form-control,
 .contact-form .custom-select {
-  height: 54px;
+  /* height: 54px; */
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 0 0 0;
