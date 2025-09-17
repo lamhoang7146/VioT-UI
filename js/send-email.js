@@ -1,20 +1,16 @@
-// Khởi tạo EmailJS với Public Key của bạn
 (function () {
   emailjs.init({
-    publicKey: "EfbZ0iczTDaXmkff_", // Thay thế bằng Public Key thực của bạn
+    publicKey: "EfbZ0iczTDaXmkff_",
   });
 })();
 
-// Cấu hình EmailJS
 const EMAIL_CONFIG = {
-  serviceID: "service_ohg2gah", // Thay thế bằng Service ID thực của bạn
-  adminTemplateID: "template_7agc0up", // Template gửi cho admin (bạn)
-  userTemplateID: "template_rjy2c0p", // Template gửi cho user
+  serviceID: "service_ohg2gah",
+  adminTemplateID: "template_7agc0up",
+  userTemplateID: "template_rjy2c0p",
 };
 
-// Đảm bảo DOM đã load hoàn toàn
 document.addEventListener("DOMContentLoaded", function () {
-  // Lấy các elements
   const contactForm = document.getElementById("contactForm");
   const submitBtn = document.getElementById("submitContactForm");
   const btnText = document.querySelector(".btn-text");
@@ -22,13 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const successMessage = document.getElementById("successMessage");
   const errorMessage = document.getElementById("errorMessage");
 
-  // Kiểm tra xem các elements có tồn tại không
   if (!contactForm) {
     console.error("Contact form not found!");
     return;
   }
 
-  // Validation functions
   function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -44,14 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let errorSpan = field.parentElement.querySelector(".error-message");
     let isValid = true;
 
-    // Nếu không có span thì tự tạo
     if (!errorSpan) {
       errorSpan = document.createElement("span");
       errorSpan.className = "error-message";
       field.parentElement.appendChild(errorSpan);
     }
 
-    // Reset error state
     field.classList.remove("error");
     errorSpan.textContent = "";
     errorSpan.classList.remove("show");
@@ -103,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return isValid;
   }
 
-  // Real-time validation
   contactForm.querySelectorAll(".form-control").forEach((field) => {
     field.addEventListener("blur", () => validateField(field));
     field.addEventListener("input", () => {
@@ -113,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Show/hide messages
   function showMessage(element, duration = 5000) {
     element.classList.add("show");
     setTimeout(() => {
@@ -134,24 +124,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function resetForm() {
     contactForm.reset();
-    // Remove any error states
     contactForm.querySelectorAll(".form-control").forEach((field) => {
       field.classList.remove("error");
-      field.nextElementSibling.classList.remove("show");
+      const errorSpan = field.parentElement.querySelector(".error-message");
+      if (errorSpan) errorSpan.classList.remove("show");
     });
   }
 
-  // Main send email function
   function sendEmail() {
-    // Validate form
     if (!validateForm()) {
       return;
     }
 
-    // Set loading state
     setLoadingState(true);
 
-    // Get form data
+    const captchaResponse = grecaptcha.getResponse();
+    if (!captchaResponse) {
+      alert("⚠️ Please verify captcha before submitting.");
+      setLoadingState(false);
+      return;
+    }
+
     const formData = {
       name: document.getElementById("contactName").value.trim(),
       email: document.getElementById("contactEmail").value.trim(),
@@ -160,17 +153,16 @@ document.addEventListener("DOMContentLoaded", function () {
       sentDate: new Date().toLocaleString("en-US"),
     };
 
-    // Prepare email parameters for USER (confirmation email)
     const userParams = {
-      to_email: formData.email, // Gửi đến email của user
+      to_email: formData.email,
       user_name: formData.name,
       user_email: formData.email,
       user_phone: formData.phone,
       user_message: formData.message,
       sent_date: formData.sentDate,
+      "g-recaptcha-response": captchaResponse,
     };
 
-    // Prepare email parameters for ADMIN (notification email)
     const adminParams = {
       from_name: formData.name,
       from_email: formData.email,
@@ -180,33 +172,24 @@ document.addEventListener("DOMContentLoaded", function () {
       reply_to: formData.email,
     };
 
-    // Send confirmation email to user FIRST
     emailjs
       .send(EMAIL_CONFIG.serviceID, EMAIL_CONFIG.userTemplateID, userParams)
-      .then((userResponse) => {
-        console.log(
-          "User email sent successfully!",
-          userResponse.status,
-          userResponse.text
-        );
-
-        // After user email is sent, send notification to admin
+      .then(() => {
         return emailjs.send(
           EMAIL_CONFIG.serviceID,
           EMAIL_CONFIG.adminTemplateID,
           adminParams
         );
       })
-      .then((adminResponse) => {
-        console.log(
-          "Admin email sent successfully!",
-          adminResponse.status,
-          adminResponse.text
-        );
+      .then(() => {
         document.querySelector(".contact-form-container").style.display =
           "none";
-        showMessage(successMessage);
+
+        successMessage.style.display = "block";
+        successMessage.classList.add("show");
+
         resetForm();
+        grecaptcha.reset();
       })
       .catch((error) => {
         console.error("Email sending failed...", error);
@@ -217,13 +200,11 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Form submit event
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
     sendEmail();
   });
 
-  // Enter key support for textarea
   document
     .getElementById("contactMessage")
     .addEventListener("keydown", function (e) {

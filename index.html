@@ -133,6 +133,7 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
     ></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script src="js/send-email.js"></script>
   </head>
@@ -1914,6 +1915,15 @@
                 ></textarea>
               </div>
 
+              <!-- Google reCAPTCHA -->
+              <div class="d-flex justify-content-center my-3">
+                <div
+                  class="g-recaptcha"
+                  data-sitekey="6Le9VcwrAAAAAFmefowvxs91J_lGgKsTxq7rTCFT"
+                  style="transform: scale(0.9); transform-origin: 0 0"
+                ></div>
+              </div>
+
               <!-- Submit -->
               <div class="form-group">
                 <button
@@ -1930,24 +1940,23 @@
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+        <!-- Success -->
+        <div id="successMessage" class="message-box success-message">
+          <div class="message-icon">✓</div>
+          <div class="message-content">
+            <h4>Message Sent Successfully!</h4>
+            <p>Thank you for contacting us. We'll get back to you soon.</p>
+          </div>
+        </div>
 
-            <!-- Success -->
-            <div id="successMessage" class="message-box success-message">
-              <div class="message-icon">✓</div>
-              <div class="message-content">
-                <h4>Message Sent Successfully!</h4>
-                <p>Thank you for contacting us. We'll get back to you soon.</p>
-              </div>
-            </div>
-
-            <!-- Error -->
-            <div id="errorMessage" class="message-box error-box">
-              <div class="message-icon">✗</div>
-              <div class="message-content">
-                <h4>Failed to Send Message</h4>
-                <p>Something went wrong. Please try again later.</p>
-              </div>
-            </div>
+        <!-- Error -->
+        <div id="errorMessage" class="message-box error-box">
+          <div class="message-icon">✗</div>
+          <div class="message-content">
+            <h4>Failed to Send Message</h4>
+            <p>Something went wrong. Please try again later.</p>
           </div>
         </div>
       </div>
